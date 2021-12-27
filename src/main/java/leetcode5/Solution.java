@@ -12,11 +12,11 @@ public class Solution {
                 .range(0, s.length())
                 .boxed()
                 .map(index -> longestPalindromeByIndex(s, index))
-                .reduce("", stringWithMaxLength())
+                .reduce("", palindromeWithMaxLength())
                 ;
     }
 
-    private BinaryOperator<String> stringWithMaxLength() {
+    private BinaryOperator<String> palindromeWithMaxLength() {
         return (a, b) -> (a.length() >= b.length()) ? a : b;
     }
 
@@ -36,6 +36,8 @@ public class Solution {
 
     private String longestEvenPalindromeByIndex(String s, int index) {
         boolean isLastIndex = index + 1 >= s.length();
+        // when the given index is in the last position
+        // we should not consider next index, so we return start from index directly.
         if (isLastIndex) {
             return s.substring(index);
         }
@@ -43,6 +45,7 @@ public class Solution {
     }
 
     public String longestPalindromeByIndex(String s, int left, int right) {
+        // check boundary & compare with dp thinking
         while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
             left--;
             right++;
