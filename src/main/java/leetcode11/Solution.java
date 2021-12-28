@@ -3,6 +3,7 @@ package leetcode11;
 // 實作細節: two pointer可以從端點開始、也可能從中間出發，根據應用情境不同做選擇
 // 暴力解法需要O(n^2)，透過two pointer能夠在每次尋找盡可能的最大值並且移動一個指標，因此將時間複雜度降到O(n)
 public class Solution {
+
     public int maxArea(int[] height) {
         int result = 0;
         int left = 0;
@@ -23,5 +24,16 @@ public class Solution {
         int width = right - left;
         int height =  Math.min(nums[left], nums[right]);
         return width * height;
+    }
+
+    public int maxAreaBruteForce(int[] height) {
+        int result = 0;
+        for (int i = 0; i < height.length; i++) {
+            for (int j = i + 1; j < height.length; j++) {
+                int area = (j - i) * Math.min(height[i], height[j]);
+                result = Math.max(result, area);
+            }
+        }
+        return result;
     }
 }
