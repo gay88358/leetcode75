@@ -3,7 +3,8 @@ package leetcode15;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-// 技術: two pointer 將O(n^2) => O(n)
+// 技術: 透過排序讓two pointer達到降維度的效果，O(n^2) => O(n)。
+//       排序能確保two pointer移動時能刪除不必要考慮的區塊，沒有排序沒辦法使用two pointer
 // 實作細節: 記得在特定情境透過filter將重複的條件移出 (prevent duplicate triples)
 // 當外層迴圈重複時、透過two pointer找到結果時，兩指針像內移動可能產生重複結果。
 public class Solution {
