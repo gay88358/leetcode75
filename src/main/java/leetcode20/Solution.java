@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+// 技術: 透過stack first in last out的特定來驗證parentheses的正確性
+// 實作細節: 遇到close token放到stack, 遇到open token將stack第一個值pop出來
+//          將這對pair進行驗證
+//          尋訪字串節結束後，如果stack還有值 (代表剩下的parentheses沒有對應正確的parentheses去與他結合，因此不正確)。
 
 class Solution {
     private final Stack stack = new Stack();
