@@ -38,4 +38,20 @@ class SolutionTest {
 
         assertTrue(s.isValid("()[]{}"));
     }
+
+
+
+    @Test
+    void f() {
+        int interval = 1;
+        int length = 8;
+        while (interval < length) {
+            for (int i = 0; i < length; i += (2 * interval)) {
+                System.out.println(i + ", " + (i + interval));
+            }
+            interval *= 2;
+        }
+
+    }
 }
+// implement merge 2 list & merge k list

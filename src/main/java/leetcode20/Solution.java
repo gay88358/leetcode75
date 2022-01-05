@@ -68,6 +68,7 @@ class Solution {
             if (parenthesesMap.get(left) != right) {
                 throw new IllegalArgumentException("Given Parentheses is Invalid");
             }
+
         }
     }
 
