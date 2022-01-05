@@ -8,7 +8,11 @@ public class Solution {
         int interval = 1;
         int size = lists.length;
         while (interval < size) {
-            for (int i = 0; i < size - interval; i+=(interval*2)) {
+            // size - interval prevent index out of boundary
+            // because we use i + interval to merge two list we need to ensure i + interval < size
+            // so we have formula as i < size - interval
+            // i += (interval * 2) is used to merge list by interval, so we could reduce redundany computation
+            for (int i = 0; i < size - interval; i += (interval * 2)) {
                 lists[i] = mergeTwoLists(lists[i], lists[i + interval]);
             }
             interval *= 2;
