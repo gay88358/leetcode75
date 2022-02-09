@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SolutionTest {
 
     @Test
-    void spiral_order_of_single_row() {
+    void spiral_order_of_one_row() {
         var s = new Solution();
         assertEquals(
                 s.spiralOrder(
