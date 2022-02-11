@@ -29,25 +29,25 @@ public class Solution {
 
     private List<Integer> spiralOrder(List<Integer> result) {
         recordTopRow(result);
-        moveDownTopPointer();
+        removeTraversedTopRowSpace();
         if (isAllMatrixTraversed()) {
             return result;
         }
 
         recordRightColumn(result);
-        moveLeftRightPointer();
+        removeTraversedRightColumnSpace();
         if (isAllMatrixTraversed()) {
             return result;
         }
 
         recordDownRow(result);
-        moveUpDownPointer();
+        removeTraversedDownRowSpace();
         if (isAllMatrixTraversed()) {
             return result;
         }
 
         recordLeftColumn(result);
-        moveRightLeftPointer();
+        removeTraversedLeftColumnSpace();
         if (isAllMatrixTraversed()) {
             return result;
         }
@@ -83,19 +83,19 @@ public class Solution {
         }
     }
 
-    private void moveDownTopPointer() {
+    private void removeTraversedTopRowSpace() {
         top++;
     }
 
-    private void moveLeftRightPointer() {
+    private void removeTraversedRightColumnSpace() {
         right--;
     }
 
-    private void moveUpDownPointer() {
+    private void removeTraversedDownRowSpace() {
         down--;
     }
 
-    private void moveRightLeftPointer() {
+    private void removeTraversedLeftColumnSpace() {
         left++;
     }
 }
