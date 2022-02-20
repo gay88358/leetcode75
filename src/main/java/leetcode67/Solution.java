@@ -1,43 +1,42 @@
 package leetcode67;
-
+//
 public class Solution {
     public String addBinary(String augendBinaryString, String addendBinaryString) {
         if (augendBinaryString.length() < 1 || addendBinaryString.length() < 1) {
             throw new RuntimeException("Given input is invalid, please enter non-empty binary string");
         }
+        augendBinaryString = reversed(augendBinaryString);
+        addendBinaryString = reversed(addendBinaryString);
 
-        if (parsedInt(augendBinaryString) == 0) {
-            return addendBinaryString;
-        } else if (parsedInt(addendBinaryString) == 0) {
-            return augendBinaryString;
+        StringBuilder addedBinary = new StringBuilder();
+        int maxLength = Math.max(augendBinaryString.length(), addendBinaryString.length());
+        int carry = 0;
+        for (int index = 0; index < maxLength; index++) {
+            int augend = parsedInt(augendBinaryString, index); //被加數
+            int addend = parsedInt(addendBinaryString, index); //加數
+            int sum = augend + addend + carry;
+            int remainder = sum % 2;
+            carry = sum / 2;
+            addedBinary.append(remainder);
         }
-
-        if (augendBinaryString.equals("10") && addendBinaryString.equals("1")) {
-            return "11";
+        if (hasUnused(carry)) {
+            addedBinary.append(carry);
         }
+        return addedBinary.reverse().toString();
+    }
 
+    private boolean hasUnused(int carry) {
+        return carry == 1;
+    }
 
-        int augendIndex = 0;
-        int addendIndex = 0;
-
-        int augend = parsedInt(augendBinaryString, augendIndex); //被加數
-        int addend = parsedInt(addendBinaryString, addendIndex); //加數
-
-        int sum = augend + addend;
-        int remainder = sum % 2;
-        int carry = sum / 2;
-        StringBuilder result = new StringBuilder();
-        result.append(carry);
-        result.append(remainder);
-        return result.toString();
+    private String reversed(String str) {
+        return new StringBuilder(str).reverse().toString();
     }
 
     private int parsedInt(String a, int index) {
+        if (index >= a.length()) {
+            return 0;
+        }
         return a.charAt(index) - 48;
     }
-
-    private int parsedInt(String a) {
-        return Integer.parseInt(a);
-    }
-
 }
