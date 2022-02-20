@@ -24,7 +24,7 @@ class SolutionTest {
 
         assertEquals("10", s.addBinary("1", "1"));
         assertEquals("11", s.addBinary("10", "1")); // scalar to iteration
-        assertEquals("100", s.addBinary("11", "1")); // use another carry
-        assertEquals("10101", s.addBinary("1010", "1011")); // complex
+        assertEquals("100", s.addBinary("11", "1")); // use carry at higher digit
+        assertEquals("10101", s.addBinary("1010", "1011"));
     }
 }
